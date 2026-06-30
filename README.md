@@ -4,6 +4,6 @@ An Amazon-style e-commerce website.
 
 ## Team Members
 - Aliya
-- MTejasri
+- Tejasri
 - Aasritha
 - Karthik
