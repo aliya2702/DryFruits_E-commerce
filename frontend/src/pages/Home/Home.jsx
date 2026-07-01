@@ -14,7 +14,7 @@ import {
 
 function Home() {
   return (
-    <div className="bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 min-h-screen">
+    <div className="bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100">
       <SplashScreen />
       <HeroSection />
       <CategoriesSection />

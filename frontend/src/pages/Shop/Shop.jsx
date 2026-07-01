@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Filter, SlidersHorizontal, Search } from 'lucide-react';
+import { Filter, SlidersHorizontal, Search, X } from 'lucide-react';
 import { PRODUCTS, CATEGORIES } from '../../data/mockData';
 import ProductCard from '../../components/product/ProductCard';
 
@@ -10,13 +10,16 @@ export default function Shop() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleCategoryChange = (categoryId) => {
+    const newParams = new URLSearchParams(searchParams);
     if (categoryId === 'all') {
-      searchParams.delete('category');
+      newParams.delete('category');
     } else {
-      searchParams.set('category', categoryId);
+      newParams.set('category', categoryId);
     }
-    setSearchParams(searchParams);
+    setSearchParams(newParams);
   };
+
+  const clearSearch = () => setSearchQuery('');
 
   const filteredProducts = PRODUCTS.filter((product) => {
     const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
@@ -29,7 +32,7 @@ export default function Shop() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-stone-200/50 dark:border-stone-800/50 pb-6 gap-4">
+      <div className="flex flex-col gap-4 border-b border-stone-200/50 dark:border-stone-800/50 pb-6">
         <div>
           <h1 className="text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight">
             Gourmet Collections
@@ -38,15 +41,25 @@ export default function Shop() {
             Showing {filteredProducts.length} premium selections
           </p>
         </div>
-        <div className="relative w-full md:max-w-xs">
+
+        {/* Search Bar — full width, well-spaced */}
+        <div className="relative w-full">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none" />
           <input
             type="text"
-            placeholder="Search within shop..."
+            placeholder="Search products by name or description..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 text-sm rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 focus:outline-none focus:ring-2 focus:ring-amber-500/30 text-stone-900 dark:text-stone-100"
+            className="w-full pl-11 pr-10 py-3 text-sm rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 focus:outline-none focus:ring-2 focus:ring-amber-500/30 text-stone-900 dark:text-stone-100 shadow-sm"
           />
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-stone-400" />
+          {searchQuery && (
+            <button
+              onClick={clearSearch}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
         </div>
       </div>
 
@@ -62,6 +75,17 @@ export default function Shop() {
               Categories
             </h3>
             <div className="flex flex-wrap lg:flex-col gap-2">
+              {/* All Products button */}
+              <button
+                onClick={() => handleCategoryChange('all')}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-left transition-all ${
+                  activeCategory === 'all'
+                    ? 'bg-amber-600 text-white shadow-md'
+                    : 'bg-white hover:bg-stone-100 text-stone-600 dark:bg-stone-900 dark:hover:bg-stone-800 dark:text-stone-300 border border-stone-200 dark:border-stone-800'
+                }`}
+              >
+                All Products
+              </button>
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}
@@ -69,7 +93,7 @@ export default function Shop() {
                   className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-left transition-all ${
                     activeCategory === cat.id
                       ? 'bg-amber-600 text-white shadow-md'
-                      : 'bg-white hover:bg-stone-100 text-stone-600 dark:bg-stone-900 dark:hover:bg-stone-800 dark:text-stone-300'
+                      : 'bg-white hover:bg-stone-100 text-stone-600 dark:bg-stone-900 dark:hover:bg-stone-800 dark:text-stone-300 border border-stone-200 dark:border-stone-800'
                   }`}
                 >
                   {cat.name}
@@ -94,6 +118,12 @@ export default function Shop() {
               <p className="text-xs text-stone-500 mt-1">
                 Try clearing filters or search to explore other items.
               </p>
+              <button
+                onClick={() => { clearSearch(); handleCategoryChange('all'); }}
+                className="mt-4 px-6 py-2 bg-amber-600 text-white rounded-xl text-sm font-bold hover:bg-amber-700 transition-colors"
+              >
+                Clear All Filters
+              </button>
             </div>
           )}
         </div>

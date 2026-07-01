@@ -220,8 +220,8 @@ export { SOCIAL_LINKS };
 // ─── Hero Section Content ──────────────────────────────────────────────────────
 export const HERO_DATA = {
   badge: "🌿 India's Most Loved Dry Fruits Store",
-  headline: "Nourish Your Body With",
-  headlineAccent: "Nature's Finest",
+  headline: "Bhavani Dryfruits",
+  headlineAccent: "and Chocolates",
   subheadline:
     "Handpicked premium quality almonds, cashews, pistachios, walnuts, chocolates & gourmet gift hampers — delivered fresh to your doorstep across India.",
   cta: {

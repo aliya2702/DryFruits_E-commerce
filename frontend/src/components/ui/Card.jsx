@@ -19,7 +19,7 @@ const PADDING_MAP = {
 function Card({ children, hoverable = false, glass = false, padding = "md", className = "" }) {
   const base = glass
     ? "glass-card"
-    : "bg-stone-900 border border-stone-850 rounded-3xl";
+    : "bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-850 rounded-3xl";
 
   const hoverClass = hoverable
     ? "hover-lift hover:border-amber-500/20 hover:shadow-amber-500/5"

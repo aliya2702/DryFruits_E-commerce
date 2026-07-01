@@ -12,7 +12,7 @@ function LayoutContent() {
       <ProgressBar />
       <Navbar />
 
-      <main className="min-h-screen">
+      <main className="min-h-screen pt-20">
         {/* Outlet renders the matched child route */}
         <Outlet />
       </main>
