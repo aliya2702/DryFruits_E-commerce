@@ -1,1 +1,343 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Global Styles — Bhavani Dryfruits & Chocolates
+   Tailwind v4 compatible. Import this file in main.jsx.
+   ───────────────────────────────────────────────────────────────────────────── */
+
 @import "tailwindcss";
+
+/* ─── Design Tokens ──────────────────────────────────────────────────────────── */
+@theme {
+  /* Typography */
+  --font-sans: 'Outfit', sans-serif;
+
+  /* Brand Colors */
+  --color-brand-primary:    #f59e0b; /* amber-500  */
+  --color-brand-secondary:  #fbbf24; /* amber-400  */
+  --color-brand-accent:     #fef08a; /* yellow-200 */
+
+  /* Extended Stone Palette */
+  --color-stone-850:  #201e1b;
+  --color-stone-855:  #2c2924;
+  --color-stone-950:  #0c0a09;
+
+  /* Extended Amber Palette */
+  --color-amber-950: #271302;
+
+  /* Animation Durations */
+  --duration-splash:   2.2s;
+  --duration-fade:     0.6s;
+  --duration-entrance: 0.8s;
+  --duration-hover:    0.3s;
+
+  /* Border Radius */
+  --radius-card: 1.5rem;
+  --radius-pill: 9999px;
+
+  /* Spacing */
+  --section-padding-y: 6rem;
+  --container-max:     80rem;
+}
+
+/* ─── CSS Custom Properties (Light + Dark Themes) ────────────────────────────── */
+:root {
+  /* Light theme defaults */
+  --bg-page:         #fafaf9;       /* stone-50  */
+  --bg-surface:      #f5f5f4;       /* stone-100 */
+  --bg-card:         #ffffff;
+  --text-primary:    #1c1917;       /* stone-900 */
+  --text-secondary:  #57534e;       /* stone-600 */
+  --text-muted:      #a8a29e;       /* stone-400 */
+  --border-color:    #e7e5e4;       /* stone-200 */
+  --accent:          #f59e0b;       /* amber-500 */
+  --accent-hover:    #d97706;       /* amber-600 */
+  --accent-text:     #92400e;       /* amber-800 */
+
+  /* Scrollbar */
+  --scrollbar-track:  #f5f5f4;
+  --scrollbar-thumb:  #d6d3d1;
+  --scrollbar-thumb-hover: #a8a29e;
+}
+
+.dark {
+  /* Dark theme overrides */
+  --bg-page:         #0c0a09;       /* stone-950 */
+  --bg-surface:      #1c1917;       /* stone-900 */
+  --bg-card:         #201e1b;       /* stone-850 */
+  --text-primary:    #fafaf9;       /* stone-50  */
+  --text-secondary:  #d6d3d1;       /* stone-300 */
+  --text-muted:      #78716c;       /* stone-500 */
+  --border-color:    #292524;       /* stone-800 */
+  --accent:          #fbbf24;       /* amber-400 */
+  --accent-hover:    #f59e0b;       /* amber-500 */
+  --accent-text:     #fef08a;       /* yellow-200 */
+
+  /* Scrollbar */
+  --scrollbar-track:  #1c1917;
+  --scrollbar-thumb:  #44403c;
+  --scrollbar-thumb-hover: #78716c;
+}
+
+/* ─── Base Resets ────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ─── Custom Scrollbar ───────────────────────────────────────────────────────── */
+/* WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* ─── Global Keyframe Animations ─────────────────────────────────────────────── */
+
+/* Fade in upward */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Gentle float / hover levitate */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Pulsing glow ring */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+  50%       { box-shadow: 0 0 20px 6px rgba(245, 158, 11, 0.18); }
+}
+
+/* Shimmer sweep (skeleton loaders) */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* Subtle scale pulse for badges */
+@keyframes scalePulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Spin (used in loading indicators) */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Reusable Utility Classes ───────────────────────────────────────────────── */
+
+/* Section wrapper with consistent padding */
+.section-wrapper {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+/* Max-width container */
+.container-xl {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-xl {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-xl {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Section divider bar (amber accent line below headings) */
+.section-divider {
+  width: 4rem;
+  height: 4px;
+  background-color: var(--accent);
+  border-radius: 9999px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Gradient text — brand amber */
+.gradient-text {
+  background: linear-gradient(90deg, #f59e0b, #fef08a, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card surface */
+.glass-card {
+  background: rgba(28, 25, 23, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  border-radius: var(--radius-card);
+}
+
+/* Amber glow box shadow */
+.glow-amber {
+  box-shadow: 0 0 24px 4px rgba(245, 158, 11, 0.12);
+}
+
+/* Hover lift transition */
+.hover-lift {
+  transition: transform var(--duration-hover) ease, box-shadow var(--duration-hover) ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* Skeleton shimmer loader */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-surface) 25%,
+    var(--border-color) 37%,
+    var(--bg-surface) 63%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 0.5rem;
+}
+
+/* Fade-in utility */
+.animate-fadeIn {
+  animation: fadeIn var(--duration-fade) ease both;
+}
+
+/* Fade-in-up utility */
+.animate-fadeInUp {
+  animation: fadeInUp var(--duration-entrance) ease both;
+}
+
+/* Float utility */
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Glow pulse utility */
+.animate-glow-pulse {
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+/* Scale pulse utility */
+.animate-scale-pulse {
+  animation: scalePulse 2s ease-in-out infinite;
+}
+
+/* Smooth color transitions on theme switch */
+.theme-transition {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* ─── Focus Styles (Accessibility) ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Selection Highlight ────────────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(245, 158, 11, 0.25);
+  color: inherit;
+}
