@@ -21,7 +21,7 @@ export default function Profile() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
       
       {/* Profile Header Card */}
-      <div className="p-6 bg-gradient-to-r from-stone-900 to-stone-950 dark:from-stone-900 dark:to-stone-950 text-white rounded-3xl border border-stone-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="p-6 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 rounded-3xl text-stone-900 dark:text-white">
         <div className="flex items-center space-x-4 flex-col md:flex-row text-center md:text-left">
           <div className="h-16 w-16 bg-amber-500 rounded-full flex items-center justify-center text-stone-950 text-2xl font-black">
             {user.name.charAt(0)}
@@ -29,13 +29,13 @@ export default function Profile() {
           <div>
             <h2 className="text-xl font-bold">{user.name}</h2>
             <p className="text-xs text-stone-400 mt-0.5">{user.email} • {user.phone}</p>
-            <span className="inline-block mt-2 text-[10px] bg-stone-800 text-stone-300 font-semibold px-2.5 py-0.5 rounded-full">
+            <span className="inline-block mt-2 text-[10px] bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 font-semibold px-2.5 py-0.5 rounded-full">
               Member since {user.joined}
             </span>
           </div>
         </div>
 
-        <Button variant="outline" className="border-stone-800 hover:border-red-500 hover:text-red-400 text-stone-300 text-xs py-2 rounded-xl">
+        <Button variant="outline" className="border-stone-200 dark:border-stone-800 hover:border-red-500 hover:text-red-600 dark:hover:text-red-400 text-stone-700 dark:text-stone-300 text-xs py-2 rounded-xl">
           <LogOut className="h-4 w-4 mr-2" />
           <span>Sign Out</span>
         </Button>
@@ -72,18 +72,7 @@ export default function Profile() {
             <ChevronRight className="h-4 w-4 opacity-50" />
           </button>
 
-          <button
-            onClick={() => setActiveTab('wishlist')}
-            className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-              activeTab === 'wishlist' ? 'bg-amber-600 text-white' : 'hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300'
-            }`}
-          >
-            <div className="flex items-center space-x-3">
-              <Heart className="h-4 w-4" />
-              <span>Wishlist</span>
-            </div>
-            <ChevronRight className="h-4 w-4 opacity-50" />
-          </button>
+
         </div>
 
         {/* Content Section */}
@@ -148,12 +137,7 @@ export default function Profile() {
             </div>
           )}
 
-          {activeTab === 'wishlist' && (
-            <div className="space-y-6">
-              <h3 className="text-lg font-bold border-b border-stone-100 dark:border-stone-800 pb-3 text-stone-950 dark:text-white">Wishlist</h3>
-              <p className="text-sm text-stone-500 py-10 text-center">Your wishlist is currently empty. Tap the heart on products to save them here.</p>
-            </div>
-          )}
+
 
         </div>
 

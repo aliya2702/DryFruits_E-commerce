@@ -116,11 +116,7 @@ export default function Cart() {
                 <span>Total</span><span>₹{total}</span>
               </div>
             </div>
-            <div className="relative flex">
-              <input type="text" placeholder="Apply Coupon" className="w-full pl-9 pr-14 py-2.5 text-xs rounded-xl bg-stone-50 dark:bg-stone-950 border border-stone-200 dark:border-stone-800 focus:outline-none focus:ring-1 focus:ring-amber-500/30 text-stone-900 dark:text-stone-100" />
-              <Ticket className="absolute left-3 top-3 h-3.5 w-3.5 text-stone-400" />
-              <button className="absolute right-1 top-1 px-3 py-1.5 bg-stone-200 hover:bg-stone-300 dark:bg-stone-800 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 rounded-lg text-[10px] font-bold uppercase transition-colors">Apply</button>
-            </div>
+
             <Link to="/checkout">
               <Button variant="primary" className="w-full py-3.5 rounded-xl flex items-center justify-center space-x-2">
                 <span>Proceed To Checkout</span>

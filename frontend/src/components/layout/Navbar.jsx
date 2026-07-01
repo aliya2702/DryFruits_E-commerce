@@ -34,15 +34,26 @@ function Navbar() {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-6 shrink-0">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                to={link.path}
-                className="text-stone-700 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold transition-colors text-sm"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isHash = link.path.includes('#');
+              return isHash ? (
+                <a
+                  key={link.label}
+                  href={link.path}
+                  className="text-stone-700 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold transition-colors text-sm"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  to={link.path}
+                  className="text-stone-700 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold transition-colors text-sm"
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Spacer */}
@@ -107,16 +118,28 @@ function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden bg-stone-100/95 dark:bg-stone-950/95 border-b border-stone-200 dark:border-stone-850 absolute top-full left-0 w-full px-4 py-6 space-y-4 shadow-xl z-50"
           >
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className="block text-stone-800 dark:text-stone-100 hover:text-amber-500 font-semibold py-2 transition-colors text-base"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isHash = link.path.includes('#');
+              return isHash ? (
+                <a
+                  key={link.label}
+                  href={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-stone-800 dark:text-stone-100 hover:text-amber-500 font-semibold py-2 transition-colors text-base"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-stone-800 dark:text-stone-100 hover:text-amber-500 font-semibold py-2 transition-colors text-base"
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
 
             <div className="pt-4 border-t border-stone-200 dark:border-stone-850 flex items-center justify-between">
               <button

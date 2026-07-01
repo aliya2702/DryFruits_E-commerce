@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { Filter, SlidersHorizontal, Search, X } from 'lucide-react';
+import { useSearchParams, Link } from 'react-router-dom';
+import { Filter, SlidersHorizontal, Search, X, ArrowLeft } from 'lucide-react';
 import { PRODUCTS, CATEGORIES } from '../../data/mockData';
 import ProductCard from '../../components/product/ProductCard';
 
 export default function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCategory = searchParams.get('category') || 'all';
+  const sortOption = searchParams.get('sort') || 'default';
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleCategoryChange = (categoryId) => {
@@ -19,6 +20,16 @@ export default function Shop() {
     setSearchParams(newParams);
   };
 
+  const handleSortChange = (e) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (e.target.value === 'default') {
+      newParams.delete('sort');
+    } else {
+      newParams.set('sort', e.target.value);
+    }
+    setSearchParams(newParams);
+  };
+
   const clearSearch = () => setSearchQuery('');
 
   const filteredProducts = PRODUCTS.filter((product) => {
@@ -27,22 +38,51 @@ export default function Shop() {
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
+  }).sort((a, b) => {
+    if (sortOption === 'low-to-high') return a.price - b.price;
+    if (sortOption === 'high-to-low') return b.price - a.price;
+    return 0; // default order
   });
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      
+      {/* Return to Home Link */}
+      <div className="flex items-center">
+        <Link to="/" className="inline-flex items-center text-sm font-bold text-stone-500 hover:text-amber-600 dark:text-stone-400 dark:hover:text-amber-400 transition-colors">
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Return to Home
+        </Link>
+      </div>
+
       {/* Page Header */}
       <div className="flex flex-col gap-4 border-b border-stone-200/50 dark:border-stone-800/50 pb-6">
-        <div>
-          <h1 className="text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight">
-            Gourmet Collections
-          </h1>
-          <p className="text-xs sm:text-sm text-stone-500 dark:text-stone-400 mt-1">
-            Showing {filteredProducts.length} premium selections
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight">
+              Gourmet Collections
+            </h1>
+            <p className="text-xs sm:text-sm text-stone-500 dark:text-stone-400 mt-1">
+              Showing {filteredProducts.length} premium selections
+            </p>
+          </div>
+          
+          {/* Sort Dropdown */}
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold uppercase text-stone-500">Sort By:</span>
+            <select
+              value={sortOption}
+              onChange={handleSortChange}
+              className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-stone-800 dark:text-stone-200 text-sm rounded-xl px-3 py-2 focus:outline-none focus:ring-1 focus:ring-amber-500"
+            >
+              <option value="default">Relevance</option>
+              <option value="low-to-high">Price: Low to High</option>
+              <option value="high-to-low">Price: High to Low</option>
+            </select>
+          </div>
         </div>
 
-        {/* Search Bar — full width, well-spaced */}
+        {/* Search Bar */}
         <div className="relative w-full">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none" />
           <input

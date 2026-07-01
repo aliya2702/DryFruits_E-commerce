@@ -31,7 +31,7 @@ function ProductCard({ product, className = "" }) {
 
   return (
     <div
-      className={`bg-stone-900 border border-stone-850 hover:border-amber-500/20 rounded-3xl p-5 flex flex-col justify-between hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300 group relative hover-lift ${className}`}
+      className={`bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-850 hover:border-amber-500/50 dark:hover:border-amber-500/20 rounded-3xl p-5 flex flex-col justify-between hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300 group relative hover-lift ${className}`}
     >
       {/* Badge */}
       {product.badge && (
@@ -49,7 +49,7 @@ function ProductCard({ product, className = "" }) {
 
       {/* Product Image / Visual */}
       <Link to={`/product/${product.id}`} className="block">
-        <div className="aspect-square bg-stone-950 rounded-2xl relative mb-4 overflow-hidden group-hover:scale-105 transition-transform duration-300">
+        <div className="aspect-square bg-stone-100 dark:bg-stone-950 rounded-2xl relative mb-4 overflow-hidden group-hover:scale-105 transition-transform duration-300">
           {product.image ? (
             <img
               src={product.image}
@@ -62,7 +62,7 @@ function ProductCard({ product, className = "" }) {
               {product.emoji || "📦"}
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/10 dark:from-stone-950/30 to-transparent" />
           {product.emoji && product.image && (
             <span className="absolute bottom-2 right-2 text-2xl">{product.emoji}</span>
           )}
@@ -73,7 +73,7 @@ function ProductCard({ product, className = "" }) {
       <div className="space-y-2 flex-grow flex flex-col justify-between">
         <div>
           <Link to={`/product/${product.id}`}>
-            <h3 className="font-bold text-stone-200 text-sm line-clamp-2 hover:text-amber-400 transition-colors">
+            <h3 className="font-bold text-stone-900 dark:text-stone-200 text-sm line-clamp-2 hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
               {product.name}
             </h3>
           </Link>
