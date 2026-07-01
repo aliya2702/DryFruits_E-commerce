@@ -4,7 +4,6 @@ import {
   HeroSection,
   CategoriesSection,
   BestSellersSection,
-  OfferBanner,
   WhyChooseUs,
   AboutSection,
   ReviewsSection,
@@ -31,7 +30,6 @@ function Home() {
       <HeroSection />
       <CategoriesSection />
       <BestSellersSection />
-      <OfferBanner />
       <WhyChooseUs />
       <AboutSection />
       <ReviewsSection />

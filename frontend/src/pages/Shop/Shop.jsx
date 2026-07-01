@@ -115,17 +115,6 @@ export default function Shop() {
               Categories
             </h3>
             <div className="flex flex-wrap lg:flex-col gap-2">
-              {/* All Products button */}
-              <button
-                onClick={() => handleCategoryChange('all')}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-left transition-all ${
-                  activeCategory === 'all'
-                    ? 'bg-amber-600 text-white shadow-md'
-                    : 'bg-white hover:bg-stone-100 text-stone-600 dark:bg-stone-900 dark:hover:bg-stone-800 dark:text-stone-300 border border-stone-200 dark:border-stone-800'
-                }`}
-              >
-                All Products
-              </button>
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}

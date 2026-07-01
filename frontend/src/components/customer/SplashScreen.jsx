@@ -3,19 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ANIMATION_DURATIONS } from "../../constants/theme";
 
 function SplashScreen() {
-  // Only show the splash if the user hasn't seen it this session
-  const [show, setShow] = useState(() => {
-    if (typeof window !== "undefined") {
-      return !sessionStorage.getItem("hasSeenSplash");
-    }
-    return false;
-  });
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     if (!show) return;
     const timer = setTimeout(() => {
       setShow(false);
-      sessionStorage.setItem("hasSeenSplash", "true");
     }, ANIMATION_DURATIONS.splashScreen * 1000);
     return () => clearTimeout(timer);
   }, [show]);
