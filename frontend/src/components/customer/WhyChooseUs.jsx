@@ -4,7 +4,7 @@ import { SectionTitle, Card } from "../../components/ui";
 
 function WhyChooseUs() {
   return (
-    <section className="py-24 bg-stone-950">
+    <section className="py-24 bg-stone-50 dark:bg-stone-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <SectionTitle
@@ -21,11 +21,11 @@ function WhyChooseUs() {
               padding="sm"
               className="flex items-start gap-4 group"
             >
-              <div className="w-12 h-12 shrink-0 rounded-2xl bg-stone-950 group-hover:bg-amber-500/10 flex items-center justify-center text-2xl transition-colors duration-300">
+              <div className="w-12 h-12 shrink-0 rounded-2xl bg-stone-50 dark:bg-stone-950 group-hover:bg-amber-500/10 flex items-center justify-center text-2xl transition-colors duration-300">
                 {item.icon}
               </div>
               <div className="space-y-1.5">
-                <h3 className="font-bold text-stone-200 text-base group-hover:text-amber-400 transition-colors">
+                <h3 className="font-bold text-stone-800 dark:text-stone-200 text-base group-hover:text-amber-400 transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-stone-500 text-xs sm:text-sm leading-relaxed">

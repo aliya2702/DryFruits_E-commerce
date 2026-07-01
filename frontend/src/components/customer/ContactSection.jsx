@@ -18,7 +18,7 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-stone-950">
+    <section id="contact" className="py-24 bg-stone-50 dark:bg-stone-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
@@ -35,19 +35,19 @@ function ContactSection() {
             />
 
             <div className="space-y-4 pt-4">
-              <div className="flex items-center space-x-3 text-stone-300">
+              <div className="flex items-center space-x-3 text-stone-700 dark:text-stone-300">
                 <span className="text-xl">📞</span>
                 <div>
                   <h4 className="text-xs text-stone-500 uppercase font-semibold">Call Directly</h4>
-                  <p className="text-sm font-bold text-stone-200">{STORE_INFO.phone}</p>
+                  <p className="text-sm font-bold text-stone-800 dark:text-stone-200">{STORE_INFO.phone}</p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-3 text-stone-300">
+              <div className="flex items-center space-x-3 text-stone-700 dark:text-stone-300">
                 <span className="text-xl">✉️</span>
                 <div>
                   <h4 className="text-xs text-stone-500 uppercase font-semibold">Send Email</h4>
-                  <p className="text-sm font-bold text-stone-200">{STORE_INFO.email}</p>
+                  <p className="text-sm font-bold text-stone-800 dark:text-stone-200">{STORE_INFO.email}</p>
                 </div>
               </div>
             </div>
@@ -58,43 +58,43 @@ function ContactSection() {
             {submitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center space-y-3 py-16">
                 <span className="text-5xl">✅</span>
-                <h3 className="text-lg font-bold text-stone-200">Message Sent!</h3>
+                <h3 className="text-lg font-bold text-stone-800 dark:text-stone-200">Message Sent!</h3>
                 <p className="text-xs text-stone-500">Thank you. We will get back to you shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase text-stone-400 mb-2">Name</label>
+                  <label className="block text-xs font-bold uppercase text-stone-500 dark:text-stone-400 mb-2">Name</label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-stone-950 border border-stone-855 rounded-xl px-4 py-3 text-sm text-stone-200 focus:outline-none focus:border-amber-500/50 transition-colors"
+                    className="w-full bg-stone-50 dark:bg-stone-950 border border-stone-855 rounded-xl px-4 py-3 text-sm text-stone-800 dark:text-stone-200 focus:outline-none focus:border-amber-500/50 transition-colors"
                     placeholder="Enter your name"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase text-stone-400 mb-2">Email Address</label>
+                  <label className="block text-xs font-bold uppercase text-stone-500 dark:text-stone-400 mb-2">Email Address</label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-stone-950 border border-stone-855 rounded-xl px-4 py-3 text-sm text-stone-200 focus:outline-none focus:border-amber-500/50 transition-colors"
+                    className="w-full bg-stone-50 dark:bg-stone-950 border border-stone-855 rounded-xl px-4 py-3 text-sm text-stone-800 dark:text-stone-200 focus:outline-none focus:border-amber-500/50 transition-colors"
                     placeholder="name@email.com"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase text-stone-400 mb-2">Message</label>
+                  <label className="block text-xs font-bold uppercase text-stone-500 dark:text-stone-400 mb-2">Message</label>
                   <textarea
                     rows="4"
                     required
                     value={formData.msg}
                     onChange={(e) => setFormData({ ...formData, msg: e.target.value })}
-                    className="w-full bg-stone-950 border border-stone-855 rounded-xl px-4 py-3 text-sm text-stone-200 focus:outline-none focus:border-amber-500/50 transition-colors resize-none"
+                    className="w-full bg-stone-50 dark:bg-stone-950 border border-stone-855 rounded-xl px-4 py-3 text-sm text-stone-800 dark:text-stone-200 focus:outline-none focus:border-amber-500/50 transition-colors resize-none"
                     placeholder="How can we help you?"
                   />
                 </div>

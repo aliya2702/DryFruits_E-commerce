@@ -8,7 +8,7 @@ function OfferBanner() {
   const offer = OFFER_BANNERS[activeIndex];
 
   return (
-    <section className="py-16 bg-stone-900 border-y border-amber-900/10 relative overflow-hidden">
+    <section className="py-16 bg-stone-100 dark:bg-stone-900 border-y border-amber-900/10 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] bg-amber-500/5 rounded-full blur-[80px] pointer-events-none" />
 
@@ -23,7 +23,7 @@ function OfferBanner() {
               className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-300 cursor-pointer ${
                 activeIndex === i
                   ? "bg-amber-500 text-stone-950 border-amber-500"
-                  : "bg-transparent text-stone-400 border-stone-700 hover:border-amber-500/50"
+                  : "bg-transparent text-stone-500 dark:text-stone-400 border-stone-700 hover:border-amber-500/50"
               }`}
             >
               {o.tag}
@@ -48,18 +48,18 @@ function OfferBanner() {
               </span>
 
               <div>
-                <h2 className="text-4xl sm:text-5xl font-black text-stone-100 leading-tight">
+                <h2 className="text-4xl sm:text-5xl font-black text-stone-900 dark:text-stone-100 leading-tight">
                   {offer.headline}
                 </h2>
                 <p className="text-amber-400 font-bold text-lg mt-1">{offer.subheadline}</p>
               </div>
 
-              <p className="text-stone-400 text-sm max-w-md mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-stone-500 dark:text-stone-400 text-sm max-w-md mx-auto lg:mx-0 leading-relaxed">
                 {offer.description}
               </p>
 
               {offer.code && (
-                <div className="inline-flex items-center gap-3 bg-stone-950/60 border border-amber-500/20 rounded-xl px-4 py-3">
+                <div className="inline-flex items-center gap-3 bg-stone-50/60 dark:bg-stone-950/60 border border-amber-500/20 rounded-xl px-4 py-3">
                   <span className="text-stone-500 text-xs uppercase tracking-wider">Coupon Code:</span>
                   <span className="text-amber-400 font-black text-sm tracking-widest">{offer.code}</span>
                 </div>

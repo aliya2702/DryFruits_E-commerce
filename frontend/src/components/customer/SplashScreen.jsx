@@ -19,7 +19,7 @@ function SplashScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: ANIMATION_DURATIONS.splashFade, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] bg-stone-950 flex flex-col items-center justify-center text-center overflow-hidden px-4"
+          className="fixed inset-0 z-[9999] bg-stone-50 dark:bg-stone-950 flex flex-col items-center justify-center text-center overflow-hidden px-4"
         >
           {/* Subtle glowing ambient light behind the logo */}
           <div className="absolute w-[300px] h-[300px] rounded-full bg-amber-500/10 blur-[80px]" />
@@ -54,13 +54,13 @@ function SplashScreen() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-stone-400 text-sm mt-3 uppercase tracking-[0.25em]"
+            className="text-stone-500 dark:text-stone-400 text-sm mt-3 uppercase tracking-[0.25em]"
           >
             Dry Fruits & Chocolates
           </motion.p>
 
           {/* Progress bar line */}
-          <div className="w-48 h-1 bg-stone-900 rounded-full mt-10 overflow-hidden relative border border-stone-850">
+          <div className="w-48 h-1 bg-stone-100 dark:bg-stone-900 rounded-full mt-10 overflow-hidden relative border border-stone-200 dark:border-stone-850">
             <motion.div
               initial={{ left: "-100%" }}
               animate={{ left: "100%" }}
