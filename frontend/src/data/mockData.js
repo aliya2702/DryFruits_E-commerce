@@ -1,0 +1,122 @@
+export const CATEGORIES = [
+  { id: 'all', name: 'All Products' },
+  { id: 'dry-fruits', name: 'Premium Dry Fruits' },
+  { id: 'chocolates', name: 'Artisanal Chocolates' },
+  { id: 'hampers', name: 'Gift Hampers' },
+  { id: 'seeds', name: 'Berries & Seeds' }
+];
+
+export const PRODUCTS = [
+  {
+    id: 1,
+    name: 'Jumbo California Almonds',
+    category: 'dry-fruits',
+    price: 399,
+    originalPrice: 499,
+    unit: '500g',
+    rating: 4.8,
+    reviews: 128,
+    image: 'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=600&q=80',
+    description: 'Handpicked, premium grade California almonds. Roasted to perfection and packed with nutrients, fiber, and healthy fats.',
+    tag: 'Best Seller',
+    inStock: true
+  },
+  {
+    id: 2,
+    name: 'Premium Roasted Salted Cashews',
+    category: 'dry-fruits',
+    price: 449,
+    originalPrice: 549,
+    unit: '500g',
+    rating: 4.9,
+    reviews: 94,
+    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80',
+    description: 'Crispy, buttery, and perfectly salted. Our premium cashews are slow-roasted to bring out their natural flavor.',
+    tag: 'Popular',
+    inStock: true
+  },
+  {
+    id: 3,
+    name: 'Royal Medjool Dates',
+    category: 'dry-fruits',
+    price: 599,
+    originalPrice: 699,
+    unit: '500g',
+    rating: 4.7,
+    reviews: 82,
+    image: 'https://images.unsplash.com/photo-1569588001181-8530901595b9?auto=format&fit=crop&w=600&q=80',
+    description: 'Naturally sweet, soft, and luscious. Imported directly from the Middle East, these dates are rich in fiber and potassium.',
+    tag: 'Premium',
+    inStock: true
+  },
+  {
+    id: 4,
+    name: 'Belgian Dark Chocolate Truffles',
+    category: 'chocolates',
+    price: 499,
+    originalPrice: 599,
+    unit: '250g',
+    rating: 4.9,
+    reviews: 154,
+    image: 'https://images.unsplash.com/photo-1548907040-4d42b52125ca?auto=format&fit=crop&w=600&q=80',
+    description: 'Rich, smooth Belgian dark chocolate truffles with a silky ganache center. Dusted with premium cocoa powder.',
+    tag: 'Signature',
+    inStock: true
+  },
+  {
+    id: 5,
+    name: 'Assorted Fruit & Nut Dark Chocolate Bar',
+    category: 'chocolates',
+    price: 199,
+    originalPrice: 249,
+    unit: '150g',
+    rating: 4.6,
+    reviews: 43,
+    image: 'https://images.unsplash.com/photo-1549007994-cb92ca87dfb7?auto=format&fit=crop&w=600&q=80',
+    description: 'Perfect blend of premium 70% dark chocolate loaded with handpicked almonds, cashews, raisins, and dried cranberries.',
+    tag: 'Trending',
+    inStock: true
+  },
+  {
+    id: 6,
+    name: 'Bhavani Royal Celebration Hamper',
+    category: 'hampers',
+    price: 1499,
+    originalPrice: 1799,
+    unit: '1 Pack',
+    rating: 5.0,
+    reviews: 31,
+    image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80',
+    description: 'The ultimate luxury gift pack containing Premium Cashews (200g), California Almonds (200g), Medjool Dates (200g), and Assorted Belgian Chocolates (4pcs).',
+    tag: 'Exclusive',
+    inStock: true
+  },
+  {
+    id: 7,
+    name: 'Organic Dried Cranberries',
+    category: 'seeds',
+    price: 299,
+    originalPrice: 349,
+    unit: '250g',
+    rating: 4.5,
+    reviews: 55,
+    image: 'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=600&q=80',
+    description: 'Sweet, tart, and highly nutritious. Perfect for healthy snacking, baking, or adding to your morning oatmeal.',
+    tag: 'Healthy Choice',
+    inStock: true
+  },
+  {
+    id: 8,
+    name: 'Raw Pumpkin & Chia Seed Mix',
+    category: 'seeds',
+    price: 249,
+    originalPrice: 299,
+    unit: '250g',
+    rating: 4.7,
+    reviews: 29,
+    image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=600&q=80',
+    description: 'A powerhouse combination of raw pumpkin seeds and premium organic chia seeds. High in plant protein and Omega-3.',
+    tag: 'Superfood',
+    inStock: false
+  }
+];
